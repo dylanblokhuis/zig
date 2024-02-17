@@ -531,8 +531,6 @@ fn SimpleCompressor(
 const builtin = @import("builtin");
 
 test "flate.Deflate tokenization" {
-    if (builtin.target.cpu.arch == .wasm32) return error.SkipZigTest;
-
     const L = Token.initLiteral;
     const M = Token.initMatch;
 
@@ -608,8 +606,6 @@ const TestTokenWriter = struct {
 };
 
 test "flate deflate file tokenization" {
-    if (builtin.target.cpu.arch == .wasm32) return error.SkipZigTest;
-
     const levels = [_]Level{ .level_4, .level_5, .level_6, .level_7, .level_8, .level_9 };
     const cases = [_]struct {
         data: []const u8, // uncompressed content
